@@ -72,9 +72,10 @@
 		ondrop='drop(event)'>
 	</div>
 
-
 	<div class="resultado">
-		<button onclick="revisar()">revisar</button>
+		<img src="./botones/revisar_activo.svg" alt="boton verde" class="fruta" />
+		<div id="casobien"></div>
+		<div id="casomal"></div>
 	</div>
 
 	
@@ -168,18 +169,16 @@
 			document.getElementById('info3').textContent = `${shuffleArray[num].fruta}`;
 		}
 
-		function revisar(){
-			let cajones = document.querySelector('.cajon');
-			console.log(cajones.dataset.cualq);
-			// let elem2 = document.getElementById('caja2').dataset.cualq;
-			// let elem3 = document.getElementById('caja3').dataset.cualq;
-			let bien = document.querySelector('.resultado').innerHTML = `<div> Super Bien! <img src="./botones/enviar_verde.svg" alt="pera" class='fruta' /> </div>`;
-			let mal = document.querySelector('.resultado').innerHTML = `<div> Intenta de nuevo! <img src="./botones/enviar_rojo.svg" alt="pera" class='fruta' /> </div>`;
+		document.querySelector('.resultado').addEventListener('click', function(){
+			let elem1 = document.querySelector('#caja1 img').dataset.cualq;
+			let elem2 = document.querySelector('#caja2 img').dataset.cualq;
+			let elem3 = document.querySelector('#caja3 img').dataset.cualq;
+			let casomal = document.querySelector('#casomal');
+			let casobien = document.querySelector('#casobien');
 
-			//console.log(elem1, elem2, elem3);
-			//return (elem1 < elem2 && elem2 < elem3 && elem1 < elem3) ? bien : mal;
-		}
-
+			return (elem2 - elem1 > 0 && elem3 - elem2 > 0) ? casobien.innerHTML = `<div> Súper Bien! <img src="./botones/enviar_verde.svg" alt='boton verde' class='fruta' /> </div>` 
+			: casomal.innerHTML = `<div> Intenta de nuevo! <img src="./botones/enviar_rojo.svg" alt='boton rojo' class='fruta' /> </div>`;			 
+		});
 
 		function drag(e){
 			e.dataTransfer.setData('text', e.target.id);
