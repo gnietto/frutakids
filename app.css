@@ -27,7 +27,8 @@ body {
 .fruta {
 	width: 7.5rem;
 	height: 7.5rem;
-	z-index: 5;			
+	z-index: 5;
+	cursor: pointer;		
 }
 
 .infocuadro{
@@ -51,14 +52,6 @@ body {
 	margin: 0 auto;
 }
 
-.resultado {
-	display: inline-flex;
-	justify-content: flex-end;
-	align-items: center;
-	width: 100vw;
-	height: 10vh;
-}
-
 .cajon {
 	background-image: url('./ppal/cajonfrutas.png');
 	background-size: contain;
@@ -68,7 +61,36 @@ body {
 	text-align: center;
 }
 
-.boton{
+.resultado {
+	display: flex;	
+	justify-content: flex-end;
+	align-items: center;
+	width: 100vw;
+	height: 10vh;
+}
+
+.boton {
 	width: 8rem;
-	margin-right: 2rem;
+	margin-right: 3rem;
+}
+
+.feedback {
+	width: 8rem;
+	margin-left: 3rem;
+}
+
+.bien {
+	display: flex;
+	justify-content: space-between;
+	background-color: #bff199;
+	color: #4d8b4b;
+	font-family: 'Open Sans';
+}
+
+.mal {
+	display: flex;
+	justify-content: space-between;
+	background-color: #ffd0cf;
+	color: #a0130f;
+	font-family: 'Open Sans';
 }

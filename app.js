@@ -86,15 +86,17 @@ function cambio(num){
 	document.getElementById('info3').textContent = `${shuffleArray[num].fruta}`;
 }
 
-document.querySelector('.resultado').addEventListener('click', function(){
+document.querySelector('#evalresultado').addEventListener('click', function(){
 	let elem1 = document.querySelector('#caja1 img').dataset.cualq;
 	let elem2 = document.querySelector('#caja2 img').dataset.cualq;
 	let elem3 = document.querySelector('#caja3 img').dataset.cualq;
-	let casomal = document.querySelector('#casomal');
 	let casobien = document.querySelector('#casobien');
+	
+	document.querySelector('#evalresultado').remove();
 
-	return (elem2 - elem1 > 0 && elem3 - elem2 > 0) ? casobien.innerHTML = `<div> Súper Bien! <img src="./botones/enviar_verde.svg" alt='boton verde' class='fruta' /> </div>` 
-	: casomal.innerHTML = `<div> Intenta de nuevo! <img src="./botones/enviar_rojo.svg" alt='boton rojo' class='fruta' /> </div>`;			 
+	return (elem2 - elem1 > 0 && elem3 - elem2 > 0) ? 
+		casobien.innerHTML = `<div class='bien resultado'> <div class='feedback'>MUY BIEN! <br> Así se hace</div> <img src="./botones/enviar_verde.svg" alt='boton verde' class='boton' /> </div>` 
+	: casobien.innerHTML = `<div class='mal resultado'> <div class='feedback'>OOPS! <br> Algo anda mal</div> <img src="./botones/enviar_rojo.svg" alt='boton rojo' class='boton' /> </div>`;
 });
 
 function drag(e){
