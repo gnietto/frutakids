@@ -3,23 +3,84 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Verduralia</title>
+	<title>FrutaKids</title>
 	<style type="text/css">
-		#info2, .fruta {
-			width: 4rem;
-			height: 4rem;
+
+		body {
+			overflow-x: hidden;
+		}
+
+		.flex{
+			display: flex;
+			flex-direction: row;
+			justify-content: space-around;
+			align-items: center;
+			height: 40vh;
+			width: 100vw;
+			text-align: center;
+		}
+
+		.triangfrutas {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.triangulofrutas1 {
+			display: flex;
+			flex-direction: row;
+		}
+
+		.fruta {
+			width: 7.5rem;
+			height: 7.5rem;
+			z-index: 5;			
+		}
+
+		.infocuadro{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			border: 1px solid;
+			border-radius: 10%;
+			width: 15rem;
+			height: 15rem;			
+		}
+
+		.cajonflex{			
+			display: inline-flex;
+			flex-direction: row;
+			justify-content: space-around;
+			align-items: center;
+			height: 40vh;
+			width: 100vw;
+			margin: 0 auto;
 		}
 
 		.resultado {
+			display: inline-flex;
+			justify-content: flex-end;
+			align-items: center;
 			width: 100vw;
 			height: 10vh;
 		}
 
-		.dropzone{
-			width: 4rem;
-			height: 4rem;
-			border: solid 1px;
+		.cajon {
+			background-image: url('./ppal/cajonfrutas.png');
+			background-size: contain;
+			z-index: 10;
+			width: 18rem;
+			height: 8rem;
+			text-align: center;
 		}
+
+		.boton{
+			width: 8rem;
+			margin-right: 2rem;
+		}
+		
 
 	</style>
 </head>
@@ -27,53 +88,47 @@
 
 <!-- html -->
 <body>
-	<div>
-		<div id='drag1'></div>
-		<div id='drag2'></div>
-		<div id='drag3'></div>
+	<div class="flex">
+		<div class="triangfrutas">
+			<div class="triangulofrutas1">
+				<div id='drag1'></div>
+				<div id='drag2'></div>				
+			</div>
+			<div id='drag3' class="triangulofrutas2"></div>
+		</div>
+
+		<div class="infocuadro">		
+			<p id='info1'> ? </p>
+			<p id='info2'> ? </p>
+			<p id='info3'> ? </p>
+		</div>
 	</div>
 
-
-	
-<!-- 	<img
-		id='drag1'
-		class='fruta dropzone' 
-		src='./Pera.svg' 
-		alt='Esta es una fruta' 
-		data-primero='100' 
-		onclick='cambio()' 
-		draggable='true' 
-		ondragstart='drag(event)' /> -->
-	
-
-	<p id='info1'>info1 </p>
-	<p id='info2'>info2 </p>
-	<p id='info3'>info3 </p>
-	<hr>
-
-	<div 
-		id='caja1'
-		class="cajon dropzone" 
-		ondragover="permitedrop(event)"
-		ondrop='drop(event)'>
-	</div>
-
-	<div
-		id='caja2'
-		class="cajon dropzone" 
-		ondragover="permitedrop(event)"
-		ondrop='drop(event)'>
-	</div>
-
-	<div
-		id='caja3'
-		class="cajon dropzone" 
-		ondragover="permitedrop(event)"
-		ondrop='drop(event)'>
+	<div class="cajonflex">
+		<div 
+			id='caja1'
+			class="cajon dropzone" 
+			ondragover="permitedrop(event)"
+			ondrop='drop(event)'>
+		</div>
+		<img src="./ppal/mayor_que.svg" alt="menorque" class="fruta" />
+		<div
+			id='caja2'
+			class="cajon dropzone" 
+			ondragover="permitedrop(event)"
+			ondrop='drop(event)'>
+		</div>
+		<img src="./ppal/mayor_que.svg" alt="menorque" class="fruta" />
+		<div
+			id='caja3'
+			class="cajon dropzone" 
+			ondragover="permitedrop(event)"
+			ondrop='drop(event)'>
+		</div>
 	</div>
 
 	<div class="resultado">
-		<img src="./botones/revisar_activo.svg" alt="boton verde" class="fruta" />
+		<img src="./botones/revisar_activo.svg" alt="boton verde" class="boton" />
 		<div id="casobien"></div>
 		<div id="casomal"></div>
 	</div>
@@ -127,7 +182,7 @@
 			{
 				fruta: 'platano',
 				imagen: './frutas/Platano.svg',
-				precio: 650,
+				precio: 600,
 				unidad: 'el kilo'
 			},
 			{
@@ -165,7 +220,7 @@
 
 		function cambio(num){			
 			document.getElementById('info1').textContent = `${shuffleArray[num].precio}`;
-			document.getElementById('info2').innerHTML = `<img src=${shuffleArray[num].imagen} alt=${shuffleArray[num].fruta}  />`;
+			document.getElementById('info2').innerHTML = `<img src=${shuffleArray[num].imagen} alt=${shuffleArray[num].fruta} class='fruta'  />`;
 			document.getElementById('info3').textContent = `${shuffleArray[num].fruta}`;
 		}
 
